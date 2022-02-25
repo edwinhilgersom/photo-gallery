@@ -7,11 +7,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list *ngIf="items">
+    <ion-card *ngFor="let item of items">
+      <ion-item>
+        <ion-card-header>
+          <ion-img [src]="item.urls.full"></ion-img>
+        </ion-card-header>
+      </ion-item>
+      <ion-item>
+        <ion-card-content>
+          <ion-card-title>
+            <span *ngIf="item.user">{{ item.user.first_name }}</span>
+          </ion-card-title>
+        </ion-card-content>
+      </ion-item>
+    </ion-card>
+  </ion-list>
 </ion-content>
